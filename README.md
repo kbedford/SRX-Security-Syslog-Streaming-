@@ -1,4 +1,4 @@
-# SRX-Security-Syslog-Streaming-
+# SRX-Security-Syslog-Streaming
 Juniper SRX RT_FLOW logs are famously chatty but most analytics only need a handful of fields: the source/destination, any NAT translation, the protocol, a couple of byte counters, and when the session actually happened
 
 This post shows how to turn that firehose into neat, line-delimited JSON using Logstash, while keeping only the session-close events that carry bytes and elapsed time (so we can also infer the session start).
