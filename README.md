@@ -9,13 +9,13 @@ Logstash parses the message, drops session-create, computes session.start = clos
 
 By the end you’ll have:
 
-    A working SRX config that streams RT_FLOW to a remote collector
+    * A working SRX config that streams RT_FLOW to a remote collector
     
-    A Logstash pipeline that extracts exactly the fields you care about
+    * A Logstash pipeline that extracts exactly the fields you care about
     
-    Compact JSON lines ready for search, dashboards, or downstream shipping (Elasticsearch, S3, Kafka, etc.)
+    * Compact JSON lines ready for search, dashboards, or downstream shipping (Elasticsearch, S3, Kafka, etc.)
     
-    If you’re fighting log volume or correlation complexity, close-only logging plus this pipeline is a clean, low-overhead way to get precise session timing and NAT visibility without drowning in noise.
+    * If you’re fighting log volume or correlation complexity, close-only logging plus this pipeline is a clean, low-overhead way to get precise session timing and NAT visibility without drowning in noise.
 
 
 
