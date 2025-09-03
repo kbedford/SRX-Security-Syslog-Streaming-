@@ -26,7 +26,6 @@ By the end you’ll have:
 > Turn noisy firewall logs into compact, analytics-ready JSON using Logstash.
 > We’ll build a tiny three-node lab (SRX1 → SRX2 → SRX3 + CentOS syslog collector), generate traffic, send **RT\_FLOW** logs from SRX2, and extract exactly the fields we care about—**source/destination+NAT, protocol, session timestamps, bytes, elapsed time**—with **close-only** logging.
 
-## TL;DR
 
 * SRX2 is the DUT (Device Under Test): it does source NAT for `10.10.10.0/24 → 20.20.20.0/24` and streams security logs to a CentOS collector (`111.1.1.2:5514/UDP`).
 * We log **session-close** events and derive the session **start** timestamp from Junos’ `elapsed-time`.
