@@ -351,18 +351,63 @@ Fields we keep:
 A rolling stream of **close** events only, for each ICMP echo/echo-reply exchange:
 
 ```json
-[root@centos logstash]# sudo tail -f /var/log/logstash/srx_rtflow.json
-{"network":{"transport":"icmp"},"juniper":{"session_id":"11203","protocol_id":1},"destination":{"port":2240,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":29387},"ip":"10.10.10.1","port":24958},"@timestamp":"2025-09-03T11:12:19.660Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11199","elapsed_seconds":2,"protocol_id":1},"destination":{"port":2238,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":9157},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:17.660Z","end":"2025-09-03T11:12:19.660Z"},"@timestamp":"2025-09-03T11:12:19.660Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11197","elapsed_seconds":3,"protocol_id":1},"destination":{"port":2237,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":25189},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:16.660Z","end":"2025-09-03T11:12:19.660Z"},"@timestamp":"2025-09-03T11:12:19.660Z"}
-{"network":{"transport":"icmp"},"juniper":{"session_id":"11205","protocol_id":1},"destination":{"port":2241,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":16016},"ip":"10.10.10.1","port":24958},"@timestamp":"2025-09-03T11:12:20.462Z"}
-{"network":{"transport":"icmp"},"juniper":{"session_id":"11207","protocol_id":1},"destination":{"port":2242,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":28935},"ip":"10.10.10.1","port":24958},"@timestamp":"2025-09-03T11:12:21.260Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11203","elapsed_seconds":2,"protocol_id":1},"destination":{"port":2240,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":29387},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:20.059Z","end":"2025-09-03T11:12:22.059Z"},"@timestamp":"2025-09-03T11:12:22.059Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11201","elapsed_seconds":3,"protocol_id":1},"destination":{"port":2239,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":25295},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:19.059Z","end":"2025-09-03T11:12:22.059Z"},"@timestamp":"2025-09-03T11:12:22.059Z"}
-{"network":{"transport":"icmp"},"juniper":{"session_id":"11209","protocol_id":1},"destination":{"port":2243,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":3441},"ip":"10.10.10.1","port":24958},"@timestamp":"2025-09-03T11:12:22.059Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11205","elapsed_seconds":3,"protocol_id":1},"destination":{"port":2241,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":16016},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:20.663Z","end":"2025-09-03T11:12:23.663Z"},"@timestamp":"2025-09-03T11:12:23.663Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11207","elapsed_seconds":2,"protocol_id":1},"destination":{"port":2242,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":28935},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:21.663Z","end":"2025-09-03T11:12:23.663Z"},"@timestamp":"2025-09-03T11:12:23.663Z"}
-{"network":{"bytes_from_server":928,"transport":"icmp"},"juniper":{"session_id":"11209","elapsed_seconds":3,"protocol_id":1},"destination":{"port":2243,"ip":"20.20.20.1"},"source":{"nat":{"ip":"20.20.20.1","port":3441},"ip":"10.10.10.1","port":24958},"session":{"start":"2025-09-03T11:12:23.062Z","end":"2025-09-03T11:12:26.062Z"},"@timestamp":"2025-09-03T11:12:26.062Z"}
+[root@centos ~]# tail -f /var/log/logstash/srx_rtflow.json | jq --unbuffered -S
+{
+  "@timestamp": "2025-09-03T12:58:36.441Z",
+  "destination": {
+    "ip": "20.20.20.1",
+    "port": 44
+  },
+  "juniper": {
+    "elapsed_seconds": 4,
+    "protocol_id": 1,
+    "session_id": "20083"
+  },
+  "network": {
+    "bytes_from_server": 84,
+    "transport": "icmp"
+  },
+  "session": {
+    "end": "2025-09-03T12:58:36.441Z",
+    "start": "2025-09-03T12:58:32.441Z"
+  },
+  "source": {
+    "ip": "10.10.10.1",
+    "nat": {
+      "ip": "20.20.20.1",
+      "port": 4029
+    },
+    "port": 44435
+  }
+}
+{
+  "@timestamp": "2025-09-03T12:58:36.441Z",
+  "destination": {
+    "ip": "20.20.20.1",
+    "port": 45
+  },
+  "juniper": {
+    "elapsed_seconds": 3,
+    "protocol_id": 1,
+    "session_id": "20085"
+  },
+  "network": {
+    "bytes_from_server": 84,
+    "transport": "icmp"
+  },
+  "session": {
+    "end": "2025-09-03T12:58:36.441Z",
+    "start": "2025-09-03T12:58:33.441Z"
+  },
+  "source": {
+    "ip": "10.10.10.1",
+    "nat": {
+      "ip": "20.20.20.1",
+      "port": 11125
+    },
+    "port": 44435
+  }
+}
 ```
 
 ---
