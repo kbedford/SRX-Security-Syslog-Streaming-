@@ -1,9 +1,11 @@
 # SRX-Security-Syslog-Streaming-
-Juniper SRX RT_FLOW logs are famously chatty—but most analytics only need a handful of fields: the source/destination, any NAT translation, the protocol, a couple of byte counters, and when the session actually happened
+Juniper SRX RT_FLOW logs are famously chatty but most analytics only need a handful of fields: the source/destination, any NAT translation, the protocol, a couple of byte counters, and when the session actually happened
 
 This post shows how to turn that firehose into neat, line-delimited JSON using Logstash, while keeping only the session-close events that carry bytes and elapsed time (so we can also infer the session start).
 
-We build a tiny lab—SRX1 → SRX2 (DUT) → SRX3 with a CentOS collector—generate ICMP traffic, and stream SRX2’s RT_FLOW logs (RFC5424 + structured data) to UDP/5514. Logstash parses the message, drops session-create, computes session.start = close_time − elapsed_time, and writes just the essentials to a file.
+We build a tiny lab—SRX1 → SRX2 (DUT) → SRX3 with a CentOS collector—generate ICMP traffic, and stream SRX2’s RT_FLOW logs (RFC5424 + structured data) to UDP/5514. 
+
+Logstash parses the message, drops session-create, computes session.start = close_time − elapsed_time, and writes just the essentials to a file.
 
 By the end you’ll have:
 
